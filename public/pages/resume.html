@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="../css/resume.css">
+<div class="resume-page">
+     <section id="resume" class="content-section bg-white">
+        <div class="container">
+            <h2 class="section-title">My Resume</h2>
+            <div id="resume-viewer-container">
+                <div id="pdf-controls">
+                    <button id="print-resume-btn" class="btn btn-print btn-lg">
+                            <i class="fas fa-print me-2"></i>Print Resume
+                        </button>
+                    <!-- <button id="prev-page" class="btn btn-secondary"><i class="fas fa-arrow-left me-2"></i>Prev</button> -->
+                    <!-- <span id="page-info">Page <span id="page-num"></span> of <span id="page-count"></span></span> -->
+                    <!-- <button id="next-page" class="btn btn-secondary">Next<i class="fas fa-arrow-right ms-2"></i></button> -->
+                </div>
+                <div id="loader" class="text-center p-5">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-2">Loading Resume...</p>
+                </div>
+                <canvas id="pdf-canvas"></canvas>
+            </div>
+        </div>
+    </section>
+    <div id="navbar-Placeholder"></div>
+</div>

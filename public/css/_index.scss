@@ -1,0 +1,35 @@
+@use "_variables" as v;
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: v.$wg-text-primary;
+    line-height: 1.6;
+
+
+    background-color: v.$wg-bg-primary;
+    min-height: 100vh;
+    display: block;
+    align-items: center;
+    justify-content: center;
+
+
+    h1, h2, h3 {
+        font-weight: 700;
+        color: v.$wg-primary;
+    }
+}
+
+
+    /* --- Animation --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

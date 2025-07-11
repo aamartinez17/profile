@@ -1,0 +1,105 @@
+// White Glove Theme SCSS
+// File: main.scss (or your preferred name)
+
+// Primary Color - Your "White Glove" Gold/Bronze
+$wg-primary: #036264;
+$wg-primary-darker: darken($wg-primary, 10%); // For hover/active states
+$wg-primary-darkest: darken($wg-primary, 20%); // Even darker shade
+$wg-primary-light: lighten($wg-primary, 10%); // A lighter grey for secondary elements
+$wg-primary-lighter: lighten($wg-primary, 20%); // A very light grey
+
+// Secondary Color - Gray/Black (for strong contrast, text, or accents)
+$wg-secondary: #ad0505; // Dark grey
+$wg-secondary-darker: darken($wg-secondary, 10%); // For hover/active states
+$wg-secondary-darkest: darken($wg-secondary, 20%); // Even darker shade
+$wg-secondary-light: lighten($wg-secondary, 10%); // A lighter grey for secondary elements
+$wg-secondary-lighter: lighten($wg-secondary, 20%); // A very light grey
+
+// Accent Colors - Complementary or for specific UI elements
+$wg-accent: #FFAB40;
+$wg-accent-light: #FFD180;
+
+// Accent Colors - Complementary or for specific UI elements
+$wg-gray: #8c8c8c;
+$wg-gray-light: lighten($wg-gray, 10%);
+$wg-gray-lighter: lighten($wg-gray, 20%);
+$wg-gray-darker: darken($wg-gray, 10%); // For hover/active states
+$wg-gray-darkest: darken($wg-gray, 20%); // Even darker shade
+
+
+// Text Colors
+$wg-text-primary:  #212121; // Text color when placed on the primary (gold) background
+$wg-text-secondary: #555; // Text color when placed on a secondary (dark grey/black) background
+$wg-text-on-accent-light: #333333; // Text color on light accent backgrounds
+$wg-text-on-accent-dark: #FFFFFF; // Text color on dark accent backgrounds
+$wg-text-dark: #000; // General dark text color (Bootstrap's default body color)
+$wg-text-light: #fdfdfd; // General light text color (Bootstrap's light)
+$wg-text-muted: #6c757d; // Muted text color
+$wg-text-warning: #b7360b;
+
+// Background Colors
+$wg-bg-white: #fdfdfd; // Very light background
+$wg-bg-gray-light: #F5F5F5;
+// $wg-bg-light-secondary: lighten($wg-secondary, 50%);
+// $wg-bg-light-accent: lighten($wg-accent-blue, 50%);
+$wg-bg-off-white: $wg-accent-light; // Using accent-light for off-white background
+$wg-bg-dark: $wg-secondary-light; // Using secondary-light for dark backgrounds
+$wg-bg-primary: #F5F5F5; // Primary color as a background
+
+//--------------------------------------------------------------------------
+// 2. Bootstrap Sass Imports (REQUIRED ORDER)
+//    Import functions and variables first to allow overrides, then mixins,
+//    and finally the rest of Bootstrap components.
+//--------------------------------------------------------------------------
+// @import "../../node_modules/bootstrap/scss/functions";
+// @import "../../node_modules/bootstrap/scss/variables"; // Contains Bootstrap's default variables
+// @import "../../node_modules/bootstrap/scss/variables-dark"; // If you plan to use dark mode
+// @import "../../node_modules/bootstrap/scss/maps"; // Required for some internal Bootstrap logic
+// @import "../../node_modules/bootstrap/scss/mixins";
+
+//--------------------------------------------------------------------------
+// 3. Bootstrap Variable Overrides (Sass-level)
+//    These variables override Bootstrap's default Sass variables BEFORE
+//    Bootstrap's components are compiled. This is the most powerful way
+//    to customize Bootstrap's theme.
+//--------------------------------------------------------------------------
+
+// Override Bootstrap's main theme colors with your custom palette
+$primary:       $wg-primary;
+$secondary:     $wg-secondary;
+// Uncomment and assign your custom colors if you want to override these:
+// $success:     your-success-color;
+// $info:        your-info-color;
+// $warning:     your-warning-color;
+// $danger:      your-danger-color;
+$light:         $wg-bg-off-white;
+$dark:          $wg-secondary; // Using your secondary dark grey for Bootstrap's dark
+
+// Override Bootstrap's button-specific variables
+// Ensure text on your primary buttons is readable (white/light)
+// $btn-primary-color:         $wg-text-primary; // Default text color for primary button
+// $btn-primary-hover-color:   $wg-text-primary; // Text color for primary button on hover
+
+// You can also fine-tune the background/border hover/active amounts
+// These variables control how much Bootstrap lightens/darkens the color automatically
+$btn-hover-bg-shade-amount:       10%; // Slightly less aggressive shade on hover for buttons
+$btn-hover-border-shade-amount:   15%;
+$btn-active-bg-shade-amount:      15%;
+$btn-active-border-shade-amount:  20%;
+
+// General button styles
+$btn-border-radius:         .5rem; // Ensures rounded corners from your HTML
+$btn-focus-box-shadow:      0 0 0 .25rem rgba($primary, .25); // Custom focus shadow using your primary
+
+// Override link color globally if needed
+// $link-color: $primary;
+
+// Override body text and background if you want Bootstrap's base to use your colors
+// $body-color: $wg-text-dark;
+// $body-bg: $wg-bg-light;
+
+
+//--------------------------------------------------------------------------
+// 4. Import the rest of Bootstrap's Sass files
+//    This should be done AFTER all your variable overrides.
+//--------------------------------------------------------------------------

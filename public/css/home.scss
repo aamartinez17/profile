@@ -1,0 +1,227 @@
+@use "_variables" as v;
+/* --- Hero Section Styling --- */
+.home-page {
+
+    > * {
+        animation: fadeInUp 0.8s ease-out forwards;
+        opacity: 0;
+    }
+
+        .profile {
+            &-card {
+                background-color: v.$wg-bg-white;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                animation: fadeInUp 1s ease-out;
+                max-width: 1000px;
+                width: 100%;
+                margin: auto;
+            }
+
+            &-pic {
+                // zoom: 200%;
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                object-fit: cover;
+                // object-position: 200% 50%; /* Adjust these values to zoom to the desired part */
+                border: 5px solid v.$wg-accent;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+
+                &-container {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: v.$wg-primary;
+                    // padding: 2rem;
+                    overflow: hidden;
+                }
+            }
+        }
+
+    /* --- Content Styling --- */
+
+    h1 {
+        font-weight: 700;
+        color: v.$primary;
+        font-size: 2.5rem;
+    }
+
+    .job-title {
+        font-weight: 500;
+        color: v.$primary;
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
+    
+    .contact-info {
+        p {
+            margin-bottom: 0.5rem;
+            color: v.$wg-text-secondary;
+        }
+
+        i {
+            color: v.$primary;
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+    }
+
+
+    /* --- Action Buttons --- */
+    .action-buttons {
+        .btn {
+            border-radius: 50px;
+            padding: 10px 25px;
+            font-weight: 500;
+            margin: 5px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+
+            &-primary-custom {
+                background-color: v.$wg-primary;
+                color: v.$wg-text-light;
+
+                &:hover {
+                    background-color: v.$secondary;
+                    color: v.$wg-bg-white;
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+                }
+            }
+
+            &-accent-custom {
+                background-color: v.$wg-accent;
+                color: v.$wg-text-primary;
+
+                &:hover {
+                    background-color: v.$wg-accent-light;
+                    color: v.$wg-text-dark;
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+                }
+            }
+        } 
+    }
+
+    // /* --- Animation --- */
+    // @keyframes fadeInUp {
+    //     from {
+    //         opacity: 0;
+    //         transform: translateY(20px);
+    //     }
+    //     to {
+    //         opacity: 1;
+    //         transform: translateY(0);
+    //     }
+    // }
+}
+
+    // /* --- Animation --- */
+    // @keyframes fadeInUp {
+    //     from {
+    //         opacity: 0;
+    //         transform: translateY(20px);
+    //     }
+    //     to {
+    //         opacity: 1;
+    //         transform: translateY(0);
+    //     }
+    // }
+
+// /* Add staggered animations */
+// .content-container > * {
+//     animation: fadeInUp 0.8s ease-out forwards;
+//     opacity: 0;
+// }
+
+.content-container {
+    padding: 3rem;
+    h1 { animation-delay: 0.2s; }
+    .job-title { animation-delay: 0.3s; }
+    .intro-paragraph { animation-delay: 0.4s; }
+    .contact-info { animation-delay: 0.5s; }
+    .action-buttons { animation-delay: 0.6s; }
+}
+
+.content-section { padding: 6rem 2rem; background-color: v.$wg-bg-gray-light; }
+.section-title { text-align: center; margin-bottom: 4rem; font-size: 2.5rem; }
+.bg-white { background-color:v.$wg-bg-white; }
+
+
+/* --- Experience Timeline --- */
+        .timeline { position: relative; max-width: 900px; margin: 0 auto;}
+        .timeline::after {
+            content: ''; 
+            position: absolute;
+            width: 3px; 
+            background-color: v.$wg-accent;
+            top: 0; 
+            bottom: 0; left: 50%;
+            margin-left: -1.5px;
+        }
+        .timeline-item { padding: 1rem 3rem; position: relative; background-color: inherit; width: 50%; }
+        .timeline-item.left { left: 0; }
+        .timeline-item.right { left: 50%; }
+        .timeline-item::after {
+            content: ''; position: absolute;
+            width: 20px; height: 20px;
+            right: -10px; 
+            background-color: v.$wg-bg-white;
+            border: 4px solid v.$wg-primary-light;
+            top: 25px; border-radius: 50%; z-index: 1;
+        }
+        .timeline-item.right::after { left: -10px; }
+        .timeline-content { padding: 20px; background-color: v.$wg-bg-white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        .timeline-content h3 { color: v.$wg-primary; }
+        .timeline-content .date { font-weight: 500; color: v.$wg-primary-light; margin-bottom: 0.5rem; }
+        .timeline-content ul { padding-left: 20px; }
+
+        @media screen and (max-width: 768px) {
+            .timeline::after { left: 15px; }
+            .timeline-item { width: 100%; padding-left: 50px; padding-right: 15px; }
+            .timeline-item.left, .timeline-item.right { left: 0%; }
+            .timeline-item::after { left: 6px; }
+        }
+        
+        /* --- Skills Section --- */
+        .skill-card {
+            background: v.$wg-bg-white;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .skill-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .skill-card i { font-size: 3rem; color: v.$wg-secondary; margin-bottom: 1rem; }
+        .skill-card h4 { color: v.$wg-primary; }
+        .skill-card ul { list-style: none; padding: 0; }
+
+        /* --- Education Section --- */
+        .education-item {
+            background: v.$wg-bg-white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 1.5rem;
+            border-left: 5px solid v.$wg-primary;
+        }
+        .education-item h4 { color: v.$wg-primary; }
+        .education-item p { margin-bottom: 0.25rem; }
+
+        /* --- Print Styles --- */
+        @media print {
+            body { background-color: v.$wg-bg-white; color: #000; }
+            .navbar, .hero-section .profile-pic-container, .action-buttons, footer, .no-print { display: none !important; }
+            .content-section { padding: 2rem 0; }
+            .profile-card, .skill-card, .education-item, .timeline-content { box-shadow: none; border: 1px solid #ddd; }
+            h1, h2, h3, h4 { color: #000 !important; }
+            a { text-decoration: none; color: #000; }
+            .timeline::after { background-color: #ccc; }
+            .timeline-item::after { border-color: #000; background-color: #fff; }
+        }
+
+
