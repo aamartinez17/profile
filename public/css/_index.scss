@@ -33,3 +33,13 @@ body {
         transform: translateY(0);
     }
 }
+
+footer {
+    background-color: v.$wg-primary;
+    color: v.$wg-bg-white;
+}
+
+.btn-outline-primary {
+    border-color: v.$wg-primary;
+    color: v.$wg-primary;
+}

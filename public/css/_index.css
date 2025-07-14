@@ -11880,5 +11880,14 @@ body h1, body .h1, body h2, body .h2, body h3, body .h3 {
     transform: translateY(0);
   }
 }
+footer {
+  background-color: #036264;
+  color: #fdfdfd;
+}
+
+.btn-outline-primary {
+  border-color: #036264;
+  color: #036264;
+}
 
 /*# sourceMappingURL=_index.css.map */

@@ -26,6 +26,12 @@ $wg-gray-lighter: lighten($wg-gray, 20%);
 $wg-gray-darker: darken($wg-gray, 10%); // For hover/active states
 $wg-gray-darkest: darken($wg-gray, 20%); // Even darker shade
 
+$wg-blue: #0505ad;
+$wg-blue-light: lighten($wg-blue, 10%);
+$wg-blue-lighter: lighten($wg-blue, 20%);
+$wg-blue-darker: darken($wg-blue, 10%); // For hover/active states
+$wg-grblueay-darkest: darken($wg-blue, 20%); // Even darker shade
+
 
 // Text Colors
 $wg-text-primary:  #212121; // Text color when placed on the primary (gold) background

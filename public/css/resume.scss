@@ -1,28 +1,62 @@
+@use "_variables" as v;
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: 700;
+    color: v.$wg-primary;
+}
+
 /* --- PDF Viewer Section --- */
-        #resume-viewer-container {
-            max-width: 850px; /* Standard paper width ratio */
-            margin: 0 auto;
-            background: var(--white);
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
-        }
-        #pdf-canvas {
-            width: 100%;
-            height: auto;
-            border: 1px solid #eee;
-            border-radius: 4px;
-        }
-        #pdf-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-        #page-info {
+#resume-viewer-container {
+    max-width: 850px; /* Standard paper width ratio */
+    margin: 0 auto;
+    background: v.$wg-bg-white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+}
+#pdf-canvas {
+    width: 100%;
+    height: auto;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+#pdf-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+#page-info {
+    font-weight: 500;
+    color: v.$wg-text-light;
+    // color: var(--neutral-text);
+}
+#pdf-controls .btn {
+    min-width: 120px;
+}
+
+.btn-print, .btn-accent-custom {
+            margin: 0.5rem;
             font-weight: 500;
-            color: var(--neutral-text);
+            border-radius: 50px;
+            padding: 10px 25px;
         }
-        #pdf-controls .btn {
-            min-width: 120px;
-        }
+
+#print-resume-btn {
+    background-color: v.$wg-primary;
+    color: v.$wg-text-light;
+}
+
+#print-resume-btn:hover {
+    background-color: v.$wg-primary-light;
+}
+
+.btn-accent-custom {
+    background-color: v.$wg-accent;
+}
+
+.btn-accent-custom:hover {
+    background-color: v.$wg-accent-light;
+}

@@ -1,0 +1,140 @@
+@use '_variables' as v;
+
+@mixin underline-bar($width:25%) {
+    content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: $width;
+        height: 3px;
+        background-color: v.$wg-secondary; // Use Bootstrap's primary Sass variable
+}
+
+
+.projects {
+    &-page {
+        background-color: #fff; /* A clean white background for the main content area */
+    }
+    
+    &-header {
+        background-color: v.$wg-bg-gray-light;
+        color: v.$wg-text-light;
+        padding: 4rem 2rem;
+        text-align: center;
+        position: relative;
+        
+
+            h1 {
+                font-weight: 300;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+
+            h3 {
+                font-weight: 300;
+                font-style: italic;
+                opacity: 0.9;
+                max-width: 600px;
+                margin: 1rem auto 0;
+            }
+
+        &::after{
+            @include underline-bar(50%);
+            margin-top: 50px;
+        }
+    }
+
+    &-layout {
+        margin:0 auto;
+    }
+}
+
+.project-nav {
+    .nav-link {
+        color: v.$wg-text-dark;
+        font-weight: 500;
+        padding: 0.75rem 1.25rem;
+        border-radius: 0.5rem;
+        border: 1px solid transparent;
+        margin-bottom: 0.5rem;
+        transition: all 0.3s ease;
+
+        &:hover {
+            // background-color: var(--wg-accent-light);
+            // color: var(--wg-primary-darker);
+            transform: translateX(5px);
+        }
+
+        &.active {
+            background-color: v.$wg-bg-white;
+            color: v.$wg-primary-light;
+            border-color: v.$wg-secondary;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+    }
+
+    &-heading {
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: v.$wg-text-muted;
+        padding: 0 1.25rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+}
+   
+
+/* --- Right-side Content Pane Styling --- */
+.tab-content {
+    padding-left: 2rem;
+    margin: 3rem;
+}
+
+.project-detail-content {
+    .project-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 0.75rem;
+        margin-bottom: 2rem;
+    }
+
+    h3 {
+        font-weight: 600;
+        color: v.$wg-text-dark;
+    }
+
+    p {
+        color: v.$wg-text-dark;
+        line-height: 1.7;
+    }
+}
+
+.tab-pane {
+    &.fade {
+        transition: opacity .4s ease-in-out;
+    }
+
+    &.active {
+        animation: fadeIn 0.5s ease;
+    }
+}
+
+/* Add a subtle animation to the content when it becomes active */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.btn-outline-accent {
+    border-color: v.$wg-blue;
+    color: v.$wg-blue;
+    &:hover {
+        background-color: v.$wg-blue;
+        color: v.$wg-text-light;
+        border-color: v.$wg-blue;
+    }
+}
