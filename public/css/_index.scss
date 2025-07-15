@@ -39,7 +39,174 @@ footer {
     color: v.$wg-bg-white;
 }
 
-.btn-outline-primary {
-    border-color: v.$wg-primary;
-    color: v.$wg-primary;
+// #mainNavbar.navbar-scrolled {
+// position: fixed;
+// top:0;
+// background-color: v.$wg-accent;
+// width: 100%;
+// padding-top: 0.5rem; /* Reduced padding when scrolled */
+// padding-bottom: 0.5rem;
+// color: v.$primary;
+// // background-color: rgba(255, 255, 255, 0.95); /* Example: slightly transparent white background */
+// box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Adds a subtle shadow */
+// z-index: 10;
+// }
+
+
+// #mainNavbar.navbar-scrolled .navbar-brand img {
+//   max-height: 30px; /* Reduced height for the logo */
+// }
+
+/* Navbar Styling */
+ header .navbar {
+    position: fixed;
+    top:0;
+    width: 100%;
+    background-color: v.$wg-bg-white;
+    box-shadow: 0 0 0 0.2rem rgba(v.$wg-accent-light, .5); // Consistent focus ring
+    opacity: .8;
+    z-index: 10;
+    .nav-link {
+        color: v.$wg-primary; // e.g., White text on gold background
+        transition: color 0.2s ease-in-out;
+
+        &.active {
+            color: v.$wg-primary-darker; // A distinct but complementary color like Linen
+        }
+
+        &:hover {
+            color: v.$wg-accent-dark; // Same as active, or a slightly less intense version
+        }
+
+        &:focus {
+            color: v.$wg-accent-dark; // Ensure text color remains clear
+        }
+    }
+
+
+    .navbar-brand {
+        // background-color: v.$primary;
+
+        img {
+            height: 30px;
+            // display: none;
+        }
+    }
+
+    .navbar-toggler {
+        border-color: v.$wg-text-light; // Toggler border color
+        &:focus {
+            box-shadow: 0 0 0 0.2rem rgba(v.$wg-accent-light, 0.45); // Consistent focus ring
+            border-color: v.$wg-text-light;
+        }
+        .navbar-toggler-icon {
+            // Background image uses fill='%23ffffff' for white icon;
+            // if you change v.$wg-text-on-primary to a dark color for dark navbar,
+            // you might need to adjust this SVG fill color dynamically if possible,
+            // or provide a different SVG for dark togglers.
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(3, 98, 100)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+    }
+}
+
+
+#to-top-button {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  
+  width: 4.3rem;
+  height: 4.3rem;
+  border-radius: 50%;
+  
+  /* The initial background color */
+  background-color: v.$wg-bg-white;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  text-decoration: none;
+  cursor: pointer;
+  
+  z-index: 1000;
+//   position: relative; /* This is CRITICAL for pseudo-elements and child positioning */
+  overflow: visible; /* Changed from hidden to allow the H3 to show outside the circle */
+  
+  /* Styles for showing/hiding the button */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+  
+  /* Initialize the CSS variable for the fill amount */
+  --scroll-fill-amount: 0;
+}
+
+/* The animated background layer */
+#to-top-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* This is the color that will "fill up" */
+  background-color: v.$wg-bg-white; /* A darker shade of your primary color */
+  
+  transform-origin: bottom; /* Animation starts from the bottom */
+  
+  /* The transform now reads its value from our CSS variable */
+  transform: scaleY(var(--scroll-fill-amount));
+  
+  /* We remove the transition from here so the fill updates instantly with scroll */
+  z-index: 0; /* Ensures it's behind the icon and the text */
+  border-radius: 50%; /* Make sure the fill effect is also rounded */
+}
+
+/* --- NEW: Style for the H3 tag that appears on hover --- */
+#to-top-button h3 {
+  content: 'To Top';
+  position: absolute;
+  right: 100%; /* Position it to the left of the button */
+  top: 50%;
+  transform: translateY(-50%) translateX(20px); /* Start it slightly to the right of its final position */
+  margin-right: 10px; /* Space between text and button */
+
+  background-color: v.$wg-text-dark; /* A dark background for the tooltip */
+  color: v.$wg-text-light;
+  padding: 5px 10px;
+  border-radius: 5px;
+  white-space: nowrap; /* Prevents the text from wrapping */
+  font-size: 0.85rem;
+  font-family: system-ui, -apple-system, sans-serif; /* A standard sans-serif font */
+
+  /* Hide it by default */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1; 
+}
+
+/* Show the H3 on hover */
+#to-top-button:hover h3 {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0); /* Slide it into view from the right */
+}
+
+
+/* The icon itself */
+#to-top-button .bi {
+  font-size: 3rem; /* Size of the icon */
+  color: v.$wg-accent; /* Use your theme's text color */
+  position: relative;
+  z-index: 2; /* Highest z-index to be on top of everything */
+  padding-top: 5px;
+}
+
+/* Class added by JavaScript to show the button */
+#to-top-button.is-visible {
+  opacity: 1;
+  visibility: visible;
 }

@@ -5,7 +5,7 @@ import { projectsScript } from './projects.js'
 document.addEventListener('DOMContentLoaded', () => {
 
 const contentPlaceholder = document.getElementById('content-placeholder');
-// const headerPlaceholder = document.getElementById('header-placeholder');
+const headerPlaceholder = document.getElementById('header-placeholder');
 const footerPlaceholder = document.getElementById('footer-placeholder');
 
 // Define a list of known valid page names (without .html)
@@ -136,7 +136,7 @@ function handleRoute() {
 
 // --- Initial Page Load ---
 async function initializeApp() {
-    // await loadHTML('../pages/header.html', headerPlaceholder); // Ensure header.html path is correct
+    await loadHTML('../pages/header.html', headerPlaceholder); // Ensure header.html path is correct
     // setupNavigation(); // Setup navigation links AFTER header is loaded
     console.log("App initialized");
 

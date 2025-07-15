@@ -1,5 +1,9 @@
 @use "_variables" as v;
 
+.resume-page{
+    margin-top: v.$wg-margin-top;
+}
+
 .section-title {
     text-align: center;
     margin-bottom: 3rem;
@@ -47,6 +51,7 @@
 #print-resume-btn {
     background-color: v.$wg-primary;
     color: v.$wg-text-light;
+    
 }
 
 #print-resume-btn:hover {

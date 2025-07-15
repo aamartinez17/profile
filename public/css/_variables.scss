@@ -18,6 +18,8 @@ $wg-secondary-lighter: lighten($wg-secondary, 20%); // A very light grey
 // Accent Colors - Complementary or for specific UI elements
 $wg-accent: #FFAB40;
 $wg-accent-light: #FFD180;
+$wg-accent-dark: darken($wg-accent, 10%); // For hover/active states
+$wg-accent-darker: darken($wg-accent, 20%); // Even darker shade
 
 // Accent Colors - Complementary or for specific UI elements
 $wg-gray: #8c8c8c;
@@ -51,6 +53,9 @@ $wg-bg-gray-light: #F5F5F5;
 $wg-bg-off-white: $wg-accent-light; // Using accent-light for off-white background
 $wg-bg-dark: $wg-secondary-light; // Using secondary-light for dark backgrounds
 $wg-bg-primary: #F5F5F5; // Primary color as a background
+
+
+$wg-margin-top: 90px;
 
 //--------------------------------------------------------------------------
 // 2. Bootstrap Sass Imports (REQUIRED ORDER)
