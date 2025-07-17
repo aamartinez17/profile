@@ -1,6 +1,10 @@
 @use "_variables" as v;
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "home.scss";
+@import "navbar.scss";
+@import "projects.scss";
+@import "resume.scss";
 
 body {
     font-family: 'Inter', sans-serif;
