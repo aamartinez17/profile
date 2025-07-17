@@ -11884,6 +11884,9 @@ footer {
   background-color: #036264;
   color: #fdfdfd;
 }
+footer a i {
+  color: #fdfdfd;
+}
 
 /* Navbar Styling */
 header .navbar {
@@ -11900,7 +11903,7 @@ header .navbar .nav-link {
   transition: color 0.2s ease-in-out;
 }
 header .navbar .nav-link.active {
-  color: rgb(1.5145631068, 49.4757281553, 50.4854368932);
+  color: #FFAB40;
 }
 header .navbar .nav-link:hover {
   color: rgb(255, 148.5706806283, 13);
@@ -11922,6 +11925,10 @@ header .navbar .navbar-toggler .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(3, 98, 100)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
+.collapsing {
+  transition: height 0.35s ease;
+}
+
 #to-top-button {
   position: fixed;
   bottom: 70px;
@@ -11930,7 +11937,6 @@ header .navbar .navbar-toggler .navbar-toggler-icon {
   height: 4.3rem;
   border-radius: 50%;
   /* The initial background color */
-  background-color: #fdfdfd;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11943,17 +11949,15 @@ header .navbar .navbar-toggler .navbar-toggler-icon {
   visibility: hidden;
   transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
   /* Initialize the CSS variable for the fill amount */
-  --scroll-fill-amount: 0;
 }
 
 /* The animated background layer */
 #to-top-button::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  right: 17px;
+  width: 50%;
+  height: 50%;
   /* This is the color that will "fill up" */
   background-color: #fdfdfd; /* A darker shade of your primary color */
   transform-origin: bottom; /* Animation starts from the bottom */
@@ -11961,7 +11965,6 @@ header .navbar .navbar-toggler .navbar-toggler-icon {
   transform: scaleY(var(--scroll-fill-amount));
   /* We remove the transition from here so the fill updates instantly with scroll */
   z-index: 0; /* Ensures it's behind the icon and the text */
-  border-radius: 50%; /* Make sure the fill effect is also rounded */
 }
 
 /* --- NEW: Style for the H3 tag that appears on hover --- */
@@ -11996,7 +11999,7 @@ header .navbar .navbar-toggler .navbar-toggler-icon {
 /* The icon itself */
 #to-top-button .bi {
   font-size: 3rem; /* Size of the icon */
-  color: #FFAB40; /* Use your theme's text color */
+  color: #ad0505; /* Use your theme's text color */
   position: relative;
   z-index: 2; /* Highest z-index to be on top of everything */
   padding-top: 5px;

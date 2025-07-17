@@ -37,6 +37,9 @@ body {
 footer {
     background-color: v.$wg-primary;
     color: v.$wg-bg-white;
+    a i {
+        color: v.$wg-bg-white;
+    }
 }
 
 // #mainNavbar.navbar-scrolled {
@@ -71,7 +74,7 @@ footer {
         transition: color 0.2s ease-in-out;
 
         &.active {
-            color: v.$wg-primary-darker; // A distinct but complementary color like Linen
+            color: v.$wg-accent; // A distinct but complementary color like Linen
         }
 
         &:hover {
@@ -109,6 +112,10 @@ footer {
     }
 }
 
+                .collapsing {
+            transition: height 0.35s ease;
+        }
+
 
 #to-top-button {
   position: fixed;
@@ -120,7 +127,7 @@ footer {
   border-radius: 50%;
   
   /* The initial background color */
-  background-color: v.$wg-bg-white;
+//   background-color: v.$wg-bg-white;
   
   display: flex;
   align-items: center;
@@ -139,17 +146,17 @@ footer {
   transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
   
   /* Initialize the CSS variable for the fill amount */
-  --scroll-fill-amount: 0;
+//   --scroll-fill-amount: 0;
 }
 
 /* The animated background layer */
 #to-top-button::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+//   top: 0;
+  right: 17px;
+  width: 50%;
+  height: 50%;
   
   /* This is the color that will "fill up" */
   background-color: v.$wg-bg-white; /* A darker shade of your primary color */
@@ -161,7 +168,7 @@ footer {
   
   /* We remove the transition from here so the fill updates instantly with scroll */
   z-index: 0; /* Ensures it's behind the icon and the text */
-  border-radius: 50%; /* Make sure the fill effect is also rounded */
+//   border-radius: 50%; /* Make sure the fill effect is also rounded */
 }
 
 /* --- NEW: Style for the H3 tag that appears on hover --- */
@@ -199,7 +206,7 @@ footer {
 /* The icon itself */
 #to-top-button .bi {
   font-size: 3rem; /* Size of the icon */
-  color: v.$wg-accent; /* Use your theme's text color */
+  color: v.$wg-secondary; /* Use your theme's text color */
   position: relative;
   z-index: 2; /* Highest z-index to be on top of everything */
   padding-top: 5px;

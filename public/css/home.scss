@@ -18,6 +18,11 @@
                 max-width: 1000px;
                 width: 100%;
                 margin: auto;
+
+                a:link, a:visited, a:hover, a:active {
+                    text-decoration: none;
+                    color: v.$wg-text-dark;
+                }
             }
 
             &-pic {

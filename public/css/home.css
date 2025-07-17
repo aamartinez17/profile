@@ -17,6 +17,10 @@
   width: 100%;
   margin: auto;
 }
+.home-page .profile-card a:link, .home-page .profile-card a:visited, .home-page .profile-card a:hover, .home-page .profile-card a:active {
+  text-decoration: none;
+  color: #000;
+}
 .home-page .profile-pic {
   width: 200px;
   height: 200px;
