@@ -11941,6 +11941,10 @@ textarea.form-control-lg {
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
+.home-page .content-section {
+  padding: 6rem 2rem;
+  background-color: #F5F5F5;
+}
 
 .content-container {
   padding: 3rem;
@@ -11959,11 +11963,6 @@ textarea.form-control-lg {
 }
 .content-container .action-buttons {
   animation-delay: 0.6s;
-}
-
-.content-section {
-  padding: 6rem 2rem;
-  background-color: #F5F5F5;
 }
 
 .section-title {
@@ -12267,12 +12266,13 @@ textarea.form-control-lg {
   transition: all 0.3s ease;
 }
 .project-nav .nav-link:hover {
+  color: #000;
   transform: translateX(5px);
 }
 .project-nav .nav-link.active {
   background-color: #fdfdfd;
-  color: rgb(4.4854368932, 146.5242718447, 149.5145631068);
-  border-color: #ad0505;
+  color: #036264;
+  border-color: #FFAB40;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 .project-nav-heading {
@@ -12306,6 +12306,9 @@ textarea.form-control-lg {
   color: #000;
   line-height: 1.7;
 }
+.project-detail-content a {
+  text-decoration: none;
+}
 
 .tab-pane.fade {
   transition: opacity 0.4s ease-in-out;
@@ -12326,8 +12329,12 @@ textarea.form-control-lg {
   }
 }
 .btn-outline-accent {
+  border: #000 1px solid;
+  border-radius: 0.25rem;
   border-color: #0505ad;
   color: #0505ad;
+  text-decoration: none;
+  padding: 0.5rem;
 }
 .btn-outline-accent:hover {
   background-color: #0505ad;
@@ -12335,12 +12342,9 @@ textarea.form-control-lg {
   border-color: #0505ad;
 }
 
-.resume-page {
-  margin-top: 90px;
-}
-
 .section-title {
   text-align: center;
+  margin-top: 5rem;
   margin-bottom: 3rem;
   font-weight: 700;
   color: #036264;
@@ -12379,11 +12383,8 @@ textarea.form-control-lg {
   min-width: 120px;
 }
 
-.btn-print, .btn-accent-custom {
-  margin: 0.5rem;
-  font-weight: 500;
-  border-radius: 50px;
-  padding: 10px 25px;
+#btn-accent-custom {
+  background-color: #FFAB40;
 }
 
 #print-resume-btn {
@@ -12393,10 +12394,6 @@ textarea.form-control-lg {
 
 #print-resume-btn:hover {
   background-color: rgb(4.4854368932, 146.5242718447, 149.5145631068);
-}
-
-.btn-accent-custom {
-  background-color: #FFAB40;
 }
 
 .btn-accent-custom:hover {

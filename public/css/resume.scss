@@ -1,11 +1,9 @@
 @use "_variables" as v;
 
-.resume-page{
-    margin-top: v.$wg-margin-top;
-}
 
 .section-title {
     text-align: center;
+    margin-top: 5rem;
     margin-bottom: 3rem;
     font-weight: 700;
     color: v.$wg-primary;
@@ -41,11 +39,8 @@
     min-width: 120px;
 }
 
-.btn-print, .btn-accent-custom {
-            margin: 0.5rem;
-            font-weight: 500;
-            border-radius: 50px;
-            padding: 10px 25px;
+#btn-accent-custom {
+            background-color: v.$wg-accent;
         }
 
 #print-resume-btn {
@@ -56,10 +51,6 @@
 
 #print-resume-btn:hover {
     background-color: v.$wg-primary-light;
-}
-
-.btn-accent-custom {
-    background-color: v.$wg-accent;
 }
 
 .btn-accent-custom:hover {
