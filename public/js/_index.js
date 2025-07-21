@@ -152,8 +152,18 @@ async function loadPage(pageName, pushToHistory = true) {
         return; // Stop further execution
     }
     // console.log(`Loading content from: ${contentUrl}`);
-    await loadHTML(contentUrl, contentPlaceholder);
+    // await loadHTML(contentUrl, contentPlaceholder);
     // console.log("Load HTML")
+    const currentURL = window.location.pathname.substring(window.location.pathname.indexOf("/")+1);
+        // console.log("URL: " + currentURL);
+        // console.log("filteredPage: " + filteredPage);
+        // console.log("contentPlaceholder.innerHTML.trim()" + contentPlaceholder.innerHTML.trim());
+
+    if((filteredPage !== currentURL) || contentPlaceholder.innerHTML.trim() === ''){
+        console.log("loadHTML");
+        await loadHTML(contentUrl, contentPlaceholder);
+    }
+
     callapseNavBar();
     
 
@@ -163,37 +173,36 @@ async function loadPage(pageName, pushToHistory = true) {
         document.title = pageName.charAt(0).toUpperCase() + pageName.slice(1) + " - Profile"; // Basic title update
         history.pushState({ page: pageName }, document.title, displayUrl);
     }
-
     // Find the position of the '#' character
-                    const hashIndex = pageName.indexOf('#');
-                    // console.log("hashIndex: " + hashIndex);
+    const hashIndex = pageName.indexOf('#');
+    // console.log("hashIndex: " + hashIndex);
 
-                    // Proceed only if the link has a hash and is meant for the current page
-                    // (We assume if it has a hash, it's for this page)
-                    if (hashIndex !== -1) {
-                        // Extract the ID from the href (e.g., '#experience')
-                        const targetId = pageName.substring(hashIndex);
-                        // console.log('targetId: ' + targetId);
-                        
-                        // Find the target element on this page
-                        const targetElement = document.getElementById(targetId);
+    // Proceed only if the link has a hash and is meant for the current page
+    // (We assume if it has a hash, it's for this page)
+    if (hashIndex !== -1) {
+        // Extract the ID from the href (e.g., '#experience')
+        const targetId = pageName.substring(hashIndex);
+        // console.log('targetId: ' + targetId);
+        
+        // Find the target element on this page
+        const targetElement = document.getElementById(targetId);
 
-                        // If the target element exists on this page...
-                        if (targetElement) {
-                            // ...prevent the default browser jump
-                            event.preventDefault();
+        // If the target element exists on this page...
+        if (targetElement) {
+            // ...prevent the default browser jump
+            event.preventDefault();
 
-                            // And perform a smooth scroll to that element
-                            targetElement.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start' // Aligns the top of the element to the top of the viewport
-                            });
-                        }
-                        // If the targetElement doesn't exist, the link will behave normally,
-                        // navigating to the 'home' page and jumping to the anchor.
-                    } else {
-                        window.scrollTo(0,0);
-                    }
+            // And perform a smooth scroll to that element
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start' // Aligns the top of the element to the top of the viewport
+            });
+        }
+        // If the targetElement doesn't exist, the link will behave normally,
+        // navigating to the 'home' page and jumping to the anchor.
+    } else {
+        window.scrollTo(0,0);
+    }
 
     updateActiveNavLink(pageName);
 
