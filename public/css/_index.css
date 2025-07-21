@@ -12406,8 +12406,8 @@ textarea.form-control-lg {
     visibility: hidden;
   }
   /*
-   * Make the canvas, and its parent elements, visible.
-   * This ensures the resume is the ONLY thing that shows up.
+  * Make the canvas, and its parent elements, visible.
+  * This ensures the resume is the ONLY thing that shows up.
   */
   #pdf-canvas, #pdf-canvas * {
     visibility: visible;
@@ -12420,6 +12420,13 @@ textarea.form-control-lg {
     top: 0;
     width: 100%;
     max-height: 100vh;
+  }
+  @page {
+    size: auto;
+    margin: 0mm;
+  }
+  body {
+    margin: 0;
   }
 }
 body {
