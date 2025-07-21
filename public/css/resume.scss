@@ -56,3 +56,28 @@
 .btn-accent-custom:hover {
     background-color: v.$wg-accent-light;
 }
+
+
+@media print {
+  /* Hide every element on the page by default */
+//   body * {
+//     visibility: hidden;
+//   }
+
+  /*
+   * Make the canvas, and its parent elements, visible.
+   * This ensures the resume is the ONLY thing that shows up.
+  */
+  #pdf-canvas, #pdf-canvas * {
+    visibility: visible;
+    border: none;
+  }
+
+  /* Position the canvas at the top-left of the print page */
+  #pdf-canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}

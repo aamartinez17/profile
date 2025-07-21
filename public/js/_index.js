@@ -234,6 +234,7 @@ async function setupPageSpecificListeners(pageName) {
 function handleRoute() {
     let path = window.location.pathname;
     // Remove leading slash and .html extension for consistency
+    // path = path.replace("public/pages/", "");
     path = path.startsWith('/') ? path.substring(1) : path;
     // console.log("path: " + path);
     path = path.replace('.html', '');

@@ -12400,6 +12400,24 @@ textarea.form-control-lg {
   background-color: #FFD180;
 }
 
+@media print {
+  /* Hide every element on the page by default */
+  /*
+   * Make the canvas, and its parent elements, visible.
+   * This ensures the resume is the ONLY thing that shows up.
+  */
+  #pdf-canvas, #pdf-canvas * {
+    visibility: visible;
+    border: none;
+  }
+  /* Position the canvas at the top-left of the print page */
+  #pdf-canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
 body {
   font-family: "Inter", sans-serif;
   color: #212121;

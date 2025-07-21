@@ -129,29 +129,32 @@ export async function resumeScript() {
                     alert('Resume is not ready to print yet.');
                     return;
                 }
-                
-                // Convert the canvas content to an image data URL
-                const dataUrl = canvas.toDataURL('image/png'); 
 
-                // Create a new window for printing
-                const printWindow = window.open('', '_blank');
-                printWindow.document.open();
-                // Write the image into the new window and trigger the print dialog
-                printWindow.document.write(`
-                    <html>
-                        <head>
-                            <title>Print Resume - Alex Martinez</title>
-                            <style>
-                                @page { size: auto; margin: 0mm; }
-                                body { margin: 0; }
-                                img { width: 100%; }
-                            </style>
-                        </head>
-                        <body onload="window.print(); window.close();">
-                            <img src="${dataUrl}">
-                        </body>
-                    </html>
-                `);
-                printWindow.document.close();
+                window.print();
+
+                
+                // // Convert the canvas content to an image data URL
+                // const dataUrl = canvas.toDataURL('image/png'); 
+
+                // // Create a new window for printing
+                // const printWindow = window.open('', '_blank');
+                // printWindow.document.open();
+                // // Write the image into the new window and trigger the print dialog
+                // printWindow.document.write(`
+                //     <html>
+                //         <head>
+                //             <title>Print Resume - Alex Martinez</title>
+                //             <style>
+                //                 @page { size: auto; margin: 0mm; }
+                //                 body { margin: 0; }
+                //                 img { width: 100%; }
+                //             </style>
+                //         </head>
+                //         <body onload="window.print(); window.close();">
+                //             <img src="${dataUrl}">
+                //         </body>
+                //     </html>
+                // `);
+                // printWindow.document.close();
             });
 }
