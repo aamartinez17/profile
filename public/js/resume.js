@@ -18,8 +18,8 @@ export async function resumeScript() {
     // }
 
     const resumeURL = '../img/Resume 05102025.pdf'; // IMPORTANT: Make sure this PDF file is in the same folder.
-        console.log("resumeURL: " + resumeURL);
-        console.log("pdfjsLib: " + pdfjsLib);
+        // console.log("resumeURL: " + resumeURL);
+        // console.log("pdfjsLib: " + pdfjsLib);
 
 
 
@@ -33,7 +33,7 @@ export async function resumeScript() {
 
         // pdfjsLib.GlobalWorkerOptions.workerSrc = "../../";
         // const url = '../img/Resume 05102025.pdf'; // IMPORTANT: Make sure this PDF file is in the same folder.
-        console.log("resumeURL: " + resumeURL);
+        // console.log("resumeURL: " + resumeURL);
 
         let pdfDoc = null,
             pageNum = 1,
@@ -120,7 +120,7 @@ export async function resumeScript() {
 
 
     
-        console.log("test: " + 1);
+        // console.log("test: " + 1);
 
             // --- Print Button Functionality ---
             document.getElementById('print-resume-btn').addEventListener('click', function() {

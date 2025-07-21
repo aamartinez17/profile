@@ -1,6 +1,6 @@
 # profile
 
-git config --global user.email ""
+git config --global user.email "<email>"
 git remote add origin https://github.com/aamartinez17/profile.git
 git checkout main
 

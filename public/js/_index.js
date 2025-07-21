@@ -17,6 +17,7 @@ const VALID_PAGES = ['home', 'resume', 'projects']; // Add all your valid page n
  * @param {string} currentPageName - The name of the page currently being loaded.
  */
     function updateActiveNavLink(currentPageName) {
+        // console.log("currentPageName: " + currentPageName);
         // Assuming 'headerPlaceholder' is the container for your dynamically loaded navbar.
         // If the navbar is static, you can select it directly with document.getElementById('mainNavbar').
         const navContainer = document.getElementById('headerPlaceholder') || document;
@@ -28,32 +29,26 @@ const VALID_PAGES = ['home', 'resume', 'projects']; // Add all your valid page n
         //     return;
         // }
         // console.log('test1');
-        const navLinks = navContainer.querySelectorAll('nav a.nav-link');
+        const navLinks = navContainer.querySelectorAll('nav button.nav-link');
         // console.log('test1');
         navLinks.forEach(link => {
             // First, reset all links to be inactive.
+            // console.log('test2');
             link.classList.remove('active');
             link.removeAttribute('aria-current');
 
-            const href = link.getAttribute('href');
+            const href = link.value;
             const url = window.location.href;
-            // console.log('url' + url);
-            // if (!href) return; // Skip if a link has no href
-            // console.log('test3');
+            // console.log('url: ' + url);
+            // console.log('href: ' + href);
             try {
-                // Use the URL constructor for robust parsing. It requires a base URL
-                // to correctly handle relative paths like './home' or 'projects'.
-                // console.log(url + 'url');
-                
-                // Extract the page name and the section name (hash) from the link's href.
-                let linkPage = url.substring(url.lastIndexOf('/'));
-                // console.log('test 0 linkPage: ' + linkPage);
-                // console.log('url.lastIndexOf(#): ' + url.lastIndexOf('#'));
-                const linkSection = url.lastIndexOf('#') != -1 ? url.substring(url.lastIndexOf('#')) : null; // Get section name (e.g., 'experience') or null
-                // console.log('linkSection: ' + linkSection);
+                let linkPage = url;
+                if(url.includes('/')) {
+                    linkPage = url.substring(url.lastIndexOf('/') + 1);
+                }
+
                 // console.log('linkPage: ' + linkPage);
-                // Clean up the page name for consistent comparison.
-                // 1. Remove leading slash: "/home" -> "home"
+                
                 if (linkPage.startsWith('/')) {
                     linkPage = linkPage.substring(1);
                 }
@@ -65,25 +60,10 @@ const VALID_PAGES = ['home', 'resume', 'projects']; // Add all your valid page n
                     linkPage = 'home';
                 }
 
-                // if (linkSection) {
-                //     linkPage = linkPage + '#' + linkSection;
-                //     console.log ('test 1 linkPage: ' + linkPage );
-                //     console.log ('url: ' + url.pathname + '#' + linkSection);
-                // }
+                // console.log('linkPage: ' + linkPage);
 
-                // Determine if the link should be active.
-                // A link is active if:
-                // 1. It has a section name, and that section name matches the current identifier.
-                // OR
-                // 2. It has no section name, and its page name matches the current identifier.
-                // console.log('if: ' + (linkSection ? currentPageName + linkSection: currentPageName));
-                if(href === (linkSection ? currentPageName + linkSection: currentPageName)){
+                if(href === linkPage){
                     // console.log('test 2 linkPage: ' + linkPage);
-                    // console.log('currentPageName: ' + currentPageName);
-                    // console.log('url: ' + url.pathname);
-                    // console.log('linkSelection: ' + linkSection)
-                    // console.log('href: ' + href)
-                // if ((linkSection && linkSection === currentPageName) || (!linkSection && linkPage === currentPageName)) {
                     link.classList.add('active');
                     link.setAttribute('aria-current', 'page'); // Important for accessibility
                 }
@@ -98,25 +78,29 @@ function callapseNavBar() {
 // Find your main navbar and the collapsible element
     const mainNavbar = document.getElementById('mainNavbar');
     const navbarCollapse = document.getElementById('navbarNavAltMarkup');
+    // console.log("callapseNavBar");
 
     // Get the Bootstrap 5 collapse instance
     const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
         toggle: false // We will manually trigger hide, so we set toggle to false
     });
 
-    // Listen for click events on the entire page
-    document.addEventListener('click', function (event) {
-        // Check if the collapsible menu is currently shown
-        const isMenuOpen = navbarCollapse.classList.contains('show');
-        
-        // Check if the element that was clicked is outside of the main navbar
-        const isClickOutside = !mainNavbar.contains(event.target);
+    bsCollapse.hide();
 
-        // If the menu is open and the click was outside, hide the menu
-        if (isMenuOpen && isClickOutside) {
-            bsCollapse.hide();
-        }
-    });
+    // // Listen for click events on the entire page
+    // document.addEventListener('click', function (event) {
+    //     // Check if the collapsible menu is currently shown
+    //     const isMenuOpen = navbarCollapse.classList.contains('show');
+    //     console.log("isMenuOpen: " + isMenuOpen);
+        
+    //     // Check if the element that was clicked is outside of the main navbar
+    //     const isClickOutside = !mainNavbar.contains(event.target);
+
+    //     // If the menu is open and the click was outside, hide the menu
+    //     if (isMenuOpen || isClickOutside) {
+    //         bsCollapse.hide();
+    //     }
+    // });
 }
 
     // Function to fetch and inject HTML content
@@ -137,21 +121,26 @@ async function loadHTML(url, element) {
 
     // Function to load page content based on URL and update history
 async function loadPage(pageName, pushToHistory = true) {
-    console.log("Loading--" + pageName);
+
+    const filteredPage = pageName.includes("#") ? pageName.substring(0,pageName.indexOf('#')): pageName;
+    // console.log("filteredPage: " + filteredPage)
+    // console.log("Loading--" + filteredPage);
     // Construct the URL for the content fragment.
     // Assume content fragments are in a 'pages' subdirectory or similar.
     // e.g., if pageName is 'contact-us', it loads 'pages/contact-us.html'
     // Adjust this logic based on how your content files are named and structured.
-    const contentUrl = `../pages/${pageName}.html`; // Example: loads public/pages/contact-us.html
+    const contentUrl = `../pages/${filteredPage}.html`; // Example: loads public/pages/contact-us.html
 
-    updateActiveNavLink(pageName);
 
-    if (!VALID_PAGES.includes(pageName)) {
-        console.error(`Invalid page name requested: ${pageName}`);
+    // const filteredPage = pageName.contains("#") ? pageName.substring(0,pageName.indexOf('#')): pageName;
+    // console.log("filteredPage" + filteredPage)
+
+    if (!VALID_PAGES.includes(filteredPage)) {
+        console.error(`Invalid page name requested: ${filteredPage}`);
         contentPlaceholder.innerHTML = `
             <div class="error-message" style="padding: 20px; text-align: center;">
                 <p><strong>Page Not Found</strong></p>
-                <p>The page you're looking for ("${pageName}") doesn't seem to exist.</p>
+                <p>The page you're looking for ("${filteredPage}") doesn't seem to exist.</p>
                 <p><a href="/">Go to Homepage</a></p>
             </div>`;
         // Optionally update history to reflect the error or redirect
@@ -165,8 +154,7 @@ async function loadPage(pageName, pushToHistory = true) {
     // console.log(`Loading content from: ${contentUrl}`);
     await loadHTML(contentUrl, contentPlaceholder);
     // console.log("Load HTML")
-    window.scrollTo(0,0);
-    callapseNavBar()
+    callapseNavBar();
     
 
     if (pushToHistory) {
@@ -176,7 +164,40 @@ async function loadPage(pageName, pushToHistory = true) {
         history.pushState({ page: pageName }, document.title, displayUrl);
     }
 
-    setupPageSpecificListeners(pageName)
+    // Find the position of the '#' character
+                    const hashIndex = pageName.indexOf('#');
+                    // console.log("hashIndex: " + hashIndex);
+
+                    // Proceed only if the link has a hash and is meant for the current page
+                    // (We assume if it has a hash, it's for this page)
+                    if (hashIndex !== -1) {
+                        // Extract the ID from the href (e.g., '#experience')
+                        const targetId = pageName.substring(hashIndex);
+                        // console.log('targetId: ' + targetId);
+                        
+                        // Find the target element on this page
+                        const targetElement = document.getElementById(targetId);
+
+                        // If the target element exists on this page...
+                        if (targetElement) {
+                            // ...prevent the default browser jump
+                            event.preventDefault();
+
+                            // And perform a smooth scroll to that element
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start' // Aligns the top of the element to the top of the viewport
+                            });
+                        }
+                        // If the targetElement doesn't exist, the link will behave normally,
+                        // navigating to the 'home' page and jumping to the anchor.
+                    } else {
+                        window.scrollTo(0,0);
+                    }
+
+    updateActiveNavLink(pageName);
+
+    setupPageSpecificListeners(filteredPage);
 }
 
 async function setupPageSpecificListeners(pageName) {
@@ -218,7 +239,7 @@ function handleRoute() {
 async function initializeApp() {
     await loadHTML('../pages/header.html', headerPlaceholder); // Ensure header.html path is correct
     // setupNavigation(); // Setup navigation links AFTER header is loaded
-    console.log("App initialized");
+    // console.log("App initialized");
 
     await loadHTML('../pages/footer.html', footerPlaceholder); // Ensure footer.html path is correct
 
@@ -255,43 +276,57 @@ async function initializeNav() {
         console.error(`Error fetching ${navbarURL}:`, error);
         element.innerHTML = `<p>Error loading content. Please try again later.</p>`;
     }
+
+        document.addEventListener('click', function (event) {
+        
+        // Check if the element that was clicked is outside of the main navbar
+        const isClickOutside = !mainNavbar.contains(event.target);
+
+        // If the menu is open and the click was outside, hide the menu
+        if (isClickOutside) {
+            callapseNavBar();
+        }
+    });
+
+
+    
     // Select all links within the navigation's action-buttons div
-            const navLinks = document.querySelectorAll('.action-buttons a');
+            // const navLinks = document.querySelectorAll('.action-buttons a');
 
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(event) {
-                    // Get the full href attribute (e.g., "./home#experience")
-                    const href = this.getAttribute('href');
+            // navLinks.forEach(link => {
+            //     link.addEventListener('click', function(event) {
+            //         // Get the full href attribute (e.g., "./home#experience")
+            //         const href = this.getAttribute('href');
                     
-                    // Find the position of the '#' character
-                    const hashIndex = href.indexOf('#');
+            //         // Find the position of the '#' character
+            //         const hashIndex = href.indexOf('#');
 
-                    // Proceed only if the link has a hash and is meant for the current page
-                    // (We assume if it has a hash, it's for this page)
-                    if (hashIndex !== -1) {
-                        // Extract the ID from the href (e.g., '#experience')
-                        const targetId = href.substring(hashIndex);
+            //         // Proceed only if the link has a hash and is meant for the current page
+            //         // (We assume if it has a hash, it's for this page)
+            //         if (hashIndex !== -1) {
+            //             // Extract the ID from the href (e.g., '#experience')
+            //             const targetId = href.substring(hashIndex);
                         
-                        // Find the target element on this page
-                        const targetElement = document.querySelector(targetId);
+            //             // Find the target element on this page
+            //             const targetElement = document.querySelector(targetId);
 
-                        // If the target element exists on this page...
-                        if (targetElement) {
-                            // ...prevent the default browser jump
-                            event.preventDefault();
+            //             // If the target element exists on this page...
+            //             if (targetElement) {
+            //                 // ...prevent the default browser jump
+            //                 event.preventDefault();
 
-                            // And perform a smooth scroll to that element
-                            targetElement.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start' // Aligns the top of the element to the top of the viewport
-                            });
-                        }
-                        // If the targetElement doesn't exist, the link will behave normally,
-                        // navigating to the 'home' page and jumping to the anchor.
-                    }
-                    // If the link has no hash (like "./resume.html"), it will navigate normally.
-                });
-            });
+            //                 // And perform a smooth scroll to that element
+            //                 targetElement.scrollIntoView({
+            //                     behavior: 'smooth',
+            //                     block: 'start' // Aligns the top of the element to the top of the viewport
+            //                 });
+            //             }
+            //             // If the targetElement doesn't exist, the link will behave normally,
+            //             // navigating to the 'home' page and jumping to the anchor.
+            //         }
+            //         // If the link has no hash (like "./resume.html"), it will navigate normally.
+            //     });
+            // });
 
 }
 
@@ -355,6 +390,8 @@ function initializeToTopButton() {
 // document.addEventListener('click', function (event) {
 //         callapseNavBar();
 // });
+
+window.loadPage = loadPage; // Makes the function globally accessible
 
 
 window.addEventListener('popstate', handleRoute);

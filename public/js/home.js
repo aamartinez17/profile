@@ -59,14 +59,14 @@ export async function scrollTo() {
 
     const currentUrl = window.location.href;
     const hashIndex = currentUrl.indexOf('#');
-    console.log("hashIndex: " + hashIndex);
+    // console.log("hashIndex: " + hashIndex);
     if (hashIndex !== -1) {
         // Extract the ID from the href (e.g., '#experience')
         const targetId = currentUrl.substring(hashIndex);
-        console.log("targetId: " + targetId);
+        // console.log("targetId: " + targetId);
         // Find the target element on this page
         const targetElement = document.querySelector(targetId);
-        console.log("targetElement :" + targetElement);
+        // console.log("targetElement :" + targetElement);
 
         // If the target element exists on this page...
         if (targetElement) {

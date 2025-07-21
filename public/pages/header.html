@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-md" id="mainNavbar"> 
         <div class="container-fluid">
-            <a class="navbar-brand" href="home">
+            <a class="navbar-brand" onclick="loadPage('home')">
                 <img src="https://placehold.co/400x400/036264/FFFFFF?text=AM" alt="initials">
             </a>
 
@@ -11,11 +11,11 @@
 
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="home">Home</a>
-                    <a class="nav-link" href="home#experience">Experience</a>
-                    <a class="nav-link" href="home#skills">Skills</a>
-                    <a class="nav-link" href="projects">Projects</a>
-                    <a class="nav-link" href="resume">Resume</a>
+                    <button class="nav-link active" aria-current="page" onclick="loadPage(this.value)" value="home">Home</button>
+                    <button class="nav-link" onclick="loadPage(this.value)" value="home#experience">Experience</button>
+                    <button class="nav-link" onclick="loadPage(this.value)" value="home#skills">Skills</button>
+                    <button class="nav-link" onclick="loadPage(this.value)" value="projects">Projects</button>
+                    <button class="nav-link" onclick="loadPage(this.value)" value="resume">Resume</button>
                 </div>
             </div>
         </div>
