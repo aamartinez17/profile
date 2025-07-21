@@ -12416,6 +12416,7 @@ textarea.form-control-lg {
     left: 0;
     top: 0;
     width: 100%;
+    max-height: 98vh;
   }
 }
 body {
