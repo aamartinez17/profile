@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const contentPlaceholder = document.getElementById('content-placeholder');
 const headerPlaceholder = document.getElementById('header-placeholder');
 const footerPlaceholder = document.getElementById('footer-placeholder');
+const navContainer = document.getElementById('headerPlaceholder') || document;
 
 // Define a list of known valid page names (without .html)
 // This helps prevent requests for completely unknown pages.
@@ -20,7 +21,7 @@ const VALID_PAGES = ['home', 'resume', 'projects']; // Add all your valid page n
         // console.log("currentPageName: " + currentPageName);
         // Assuming 'headerPlaceholder' is the container for your dynamically loaded navbar.
         // If the navbar is static, you can select it directly with document.getElementById('mainNavbar').
-        const navContainer = document.getElementById('headerPlaceholder') || document;
+        // const navContainer = document.getElementById('headerPlaceholder') || document;
         // If the container isn't ready, exit.
         // console.log('test1');
         // if (!navContainer.innerHTML.trim() && navContainer.id === 'headerPlaceholder') {
@@ -214,24 +215,24 @@ async function setupPageSpecificListeners(pageName) {
     // console.log("setupPageSpecificListeners: " + pageName);
 
     if(pageName === "home"){
-        initializeNav();
+        // initializeNav();
         await homeScript();
-        scrollTo();
+        scrollTo()
     }
 
     if(pageName === "resume"){
-        initializeNav();
+        // initializeNav();
         resumeScript();
     }
 
     if(pageName === 'projects') {
-        initializeNav();
+        // initializeNav();
         projectsScript();
     }
 }
 
 // Function to handle routing based on the current path
-function handleRoute() {
+async function handleRoute() {
     let path = window.location.pathname;
     // Remove leading slash and .html extension for consistency
     // path = path.replace("public/pages/", "");
@@ -242,7 +243,8 @@ function handleRoute() {
         path = 'home'; // Default page
     }
 
-    loadPage(path, false); // false because we are just loading based on current URL, not a new navigation
+    await loadPage(path, false); // false because we are just loading based on current URL, not a new navigation
+    initializeNav();
 }
 
 // --- Initial Page Load ---
@@ -287,8 +289,8 @@ async function initializeNav() {
         element.innerHTML = `<p>Error loading content. Please try again later.</p>`;
     }
 
-        document.addEventListener('click', function (event) {
-        
+    document.addEventListener('click', function (event) {
+    
         // Check if the element that was clicked is outside of the main navbar
         const isClickOutside = !mainNavbar.contains(event.target);
 
@@ -298,45 +300,84 @@ async function initializeNav() {
         }
     });
 
+    // let experiencePostion = null;
+    // let skillPostion = null;
+    // let educationPostion = null;
 
-    
-    // Select all links within the navigation's action-buttons div
-            // const navLinks = document.querySelectorAll('.action-buttons a');
+    // if(document.querySelector(".home-page")){
+    //     console.log("element test");
+        
 
-            // navLinks.forEach(link => {
-            //     link.addEventListener('click', function(event) {
-            //         // Get the full href attribute (e.g., "./home#experience")
-            //         const href = this.getAttribute('href');
-                    
-            //         // Find the position of the '#' character
-            //         const hashIndex = href.indexOf('#');
+    //     experiencePostion = document.querySelector('#experience').getBoundingClientRect().top;
+    //     skillPostion = document.querySelector('#skills').getBoundingClientRect().top;
+    //     educationPostion = document.querySelector('#education').getBoundingClientRect().top;
+    // }
 
-            //         // Proceed only if the link has a hash and is meant for the current page
-            //         // (We assume if it has a hash, it's for this page)
-            //         if (hashIndex !== -1) {
-            //             // Extract the ID from the href (e.g., '#experience')
-            //             const targetId = href.substring(hashIndex);
-                        
-            //             // Find the target element on this page
-            //             const targetElement = document.querySelector(targetId);
 
-            //             // If the target element exists on this page...
-            //             if (targetElement) {
-            //                 // ...prevent the default browser jump
-            //                 event.preventDefault();
+    // window.addEventListener('scroll', function() {
+    //     // Get the current vertical scroll position
+    //     const scrollPosition = window.scrollY;
+        
+    //         // const elementPositionInViewport = experienceElement.getBoundingClientRect().top;
+    //         // const experience = document.querySelector('#experience');
+    //         // const elementPositionInViewport = experience.getBoundingClientRect().top;
+    //         console.log("scroll Location: " + scrollPosition);
+    //         console.log("experiencePostion Location: " + experiencePostion);
+    //         console.log("skillPostion Location: " + skillPostion);
+    //         console.log("educationPostion Location: " + educationPostion);
 
-            //                 // And perform a smooth scroll to that element
-            //                 targetElement.scrollIntoView({
-            //                     behavior: 'smooth',
-            //                     block: 'start' // Aligns the top of the element to the top of the viewport
-            //                 });
-            //             }
-            //             // If the targetElement doesn't exist, the link will behave normally,
-            //             // navigating to the 'home' page and jumping to the anchor.
-            //         }
-            //         // If the link has no hash (like "./resume.html"), it will navigate normally.
-            //     });
-            // });
+    //         // if ((scrollPosition > experiencePostion) && navContainer.getElementsByClassName()){
+    //         //     continue;
+    //         // }
+    //         const navLinks = navContainer.querySelectorAll('nav button.nav-link');
+
+    //     if(document.querySelector(".home-page")){
+
+    //         if(scrollPosition < experiencePostion){
+    //             navLinks.forEach(link => {
+    //                 if(link.value != "home"){
+    //                     link.classList.remove('active')
+    //                     link.removeAttribute('aria-current', 'page');
+    //                 } else if (!link.classList.contains('active')){
+    //                     link.classList.add('active');
+    //                     link.setAttribute('aria-current', 'page'); // Important for accessibility
+    //                 }
+    //             });
+    //         }else if(scrollPosition > educationPostion) {
+    //             navLinks.forEach(link => {
+    //                 if(link.value != "home#education"){
+    //                     link.classList.remove('active')
+    //                     link.removeAttribute('aria-current', 'page');
+    //                 } else if (!link.classList.contains('active')){
+    //                     link.classList.add('active');
+    //                     link.setAttribute('aria-current', 'page'); // Important for accessibility
+    //                 }
+    //             });
+    //         }else if(scrollPosition > skillPostion){
+    //             navLinks.forEach(link => {
+    //                 if(link.value != "home#skills"){
+    //                     link.classList.remove('active')
+    //                     link.removeAttribute('aria-current', 'page');
+    //                 } else if (!link.classList.contains('active')){
+    //                     link.classList.add('active');
+    //                     link.setAttribute('aria-current', 'page'); // Important for accessibility
+    //                 }
+    //             });
+
+    //         } else if(scrollPosition > experiencePostion) {
+    //             navLinks.forEach(link => {
+    //                 if(link.value != "home#experience"){
+    //                     link.classList.remove('active')
+    //                     link.removeAttribute('aria-current', 'page');
+    //                 } else if (!link.classList.contains('active')){
+    //                     link.classList.add('active');
+    //                     link.setAttribute('aria-current', 'page'); // Important for accessibility
+    //                 }
+    //             });
+    //         }
+    //     }
+        
+    // });
 
 }
 

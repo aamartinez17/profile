@@ -12483,9 +12483,6 @@ header .navbar .nav-link.active {
 header .navbar .nav-link:hover {
   color: rgb(255, 148.5706806283, 13);
 }
-header .navbar .nav-link:focus {
-  color: rgb(255, 148.5706806283, 13);
-}
 header .navbar .navbar-brand img {
   height: 30px;
 }

@@ -1,8 +1,8 @@
-let initiated = false;
-
-export async function homeScript() {
+// import { setTimeout } from "timers/promises";
+export async function headerscript() {
     const navbarURL = '../pages/navbar.html';
     const navbarPlaceholder = document.getElementById('navbar-Placeholder');
+    const navContainer = document.getElementById('mainNavbar');
     
     try {
     // console.log("URL: " + navbarURL);
@@ -18,31 +18,38 @@ export async function homeScript() {
         element.innerHTML = `<p>Error loading content. Please try again later.</p>`;
     }
 
-    if(!initiated) {
-        onNavInit()
-        initiated = true;
-    }
+    document.addEventListener('click', function (event) {
+    
+        // Check if the element that was clicked is outside of the main navbar
+        const isClickOutside = !mainNavbar.contains(event.target);
 
+        // If the menu is open and the click was outside, hide the menu
+        if (isClickOutside) {
+            callapseNavBar();
+        }
+    });
+        
 }
 
-function onNavInit() {
-    const margin = 53;
-    const experiencePostion = document.querySelector('#experience').getBoundingClientRect().top - margin;
-    const skillPostion = document.querySelector('#skills').getBoundingClientRect().top - margin;
-    const educationPostion = document.querySelector('#education').getBoundingClientRect().top - margin;
+
+export function onNavInit() {
+    setTimeout(() =>{
+
+            const experiencePostion = document.querySelector('#experience').getBoundingClientRect().top;
+        const skillPostion = document.querySelector('#skills').getBoundingClientRect().top;
+        const educationPostion = document.querySelector('#education').getBoundingClientRect().top;
 
     window.addEventListener('scroll', function() {
         // Get the current vertical scroll position
-        const scrollPosition = window.scrollY;
-        const navContainer = document.getElementById('mainNavbar');
+        const scrollPosition = window.scrollY + 53;
         
             // const elementPositionInViewport = experienceElement.getBoundingClientRect().top;
             // const experience = document.querySelector('#experience');
             // const elementPositionInViewport = experience.getBoundingClientRect().top;
-            // console.log("scroll Location: " + scrollPosition);
-            // console.log("experiencePostion Location: " + experiencePostion);
-            // console.log("skillPostion Location: " + skillPostion);
-            // console.log("educationPostion Location: " + educationPostion);
+            console.log("scroll Location: " + scrollPosition);
+            console.log("experiencePostion Location: " + experiencePostion);
+            console.log("skillPostion Location: " + skillPostion);
+            console.log("educationPostion Location: " + educationPostion);
 
             // if ((scrollPosition > experiencePostion) && navContainer.getElementsByClassName()){
             //     continue;
@@ -82,7 +89,7 @@ function onNavInit() {
                     }
                 });
 
-            } else if(scrollPosition > experiencePostion) {
+            } else if(scrollPosition > experiencePostion-100) {
                 navLinks.forEach(link => {
                     if(link.value != "home#experience"){
                         link.classList.remove('active')
@@ -96,34 +103,6 @@ function onNavInit() {
         }
         
     });
-}
 
-
-export async function scrollTo() {
-
-    const currentUrl = window.location.href;
-    const hashIndex = currentUrl.indexOf('#');
-    // console.log("hashIndex: " + hashIndex);
-    if (hashIndex !== -1) {
-        // Extract the ID from the href (e.g., '#experience')
-        const targetId = currentUrl.substring(hashIndex);
-        // console.log("targetId: " + targetId);
-        // Find the target element on this page
-        const targetElement = document.querySelector(targetId);
-        // console.log("targetElement :" + targetElement);
-
-        // If the target element exists on this page...
-        if (targetElement) {
-            // ...prevent the default browser jump
-            // event.preventDefault();
-
-            // And perform a smooth scroll to that element
-            targetElement.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start' // Aligns the top of the element to the top of the viewport
-            });
-        }
-        // If the targetElement doesn't exist, the link will behave normally,
-        // navigating to the 'home' page and jumping to the anchor.
-    }
+        },1000);
 }

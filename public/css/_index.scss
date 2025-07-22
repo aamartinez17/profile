@@ -87,9 +87,9 @@ footer {
             color: v.$wg-accent-dark; // Same as active, or a slightly less intense version
         }
 
-        &:focus {
-            color: v.$wg-accent-dark; // Ensure text color remains clear
-        }
+        // &:focus {
+        //     color: v.$wg-accent-dark; // Ensure text color remains clear
+        // }
     }
 
 
