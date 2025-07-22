@@ -160,7 +160,7 @@ async function loadPage(pageName, pushToHistory = true) {
         // console.log("filteredPage: " + filteredPage);
         // console.log("contentPlaceholder.innerHTML.trim()" + contentPlaceholder.innerHTML.trim());
 
-    if((filteredPage !== currentURL) || contentPlaceholder.innerHTML.trim() === ''){
+    if((filteredPage !== currentURL) || contentPlaceholder.innerHTML.trim() === '' || !pushToHistory){
         console.log("loadHTML");
         await loadHTML(contentUrl, contentPlaceholder);
     }
@@ -263,6 +263,7 @@ async function initializeApp() {
 // --- Handle Browser Back/Forward Buttons ---
 window.addEventListener('popstate', function(event) {
     if (event.state && event.state.page) {
+        console.log(event.state.page);
         loadPage(event.state.page, false); // Load content, don't push to history
     } else {
         // If no state, try to derive from location (e.g., for initial load or external links)
@@ -299,85 +300,6 @@ async function initializeNav() {
             callapseNavBar();
         }
     });
-
-    // let experiencePostion = null;
-    // let skillPostion = null;
-    // let educationPostion = null;
-
-    // if(document.querySelector(".home-page")){
-    //     console.log("element test");
-        
-
-    //     experiencePostion = document.querySelector('#experience').getBoundingClientRect().top;
-    //     skillPostion = document.querySelector('#skills').getBoundingClientRect().top;
-    //     educationPostion = document.querySelector('#education').getBoundingClientRect().top;
-    // }
-
-
-    // window.addEventListener('scroll', function() {
-    //     // Get the current vertical scroll position
-    //     const scrollPosition = window.scrollY;
-        
-    //         // const elementPositionInViewport = experienceElement.getBoundingClientRect().top;
-    //         // const experience = document.querySelector('#experience');
-    //         // const elementPositionInViewport = experience.getBoundingClientRect().top;
-    //         console.log("scroll Location: " + scrollPosition);
-    //         console.log("experiencePostion Location: " + experiencePostion);
-    //         console.log("skillPostion Location: " + skillPostion);
-    //         console.log("educationPostion Location: " + educationPostion);
-
-    //         // if ((scrollPosition > experiencePostion) && navContainer.getElementsByClassName()){
-    //         //     continue;
-    //         // }
-    //         const navLinks = navContainer.querySelectorAll('nav button.nav-link');
-
-    //     if(document.querySelector(".home-page")){
-
-    //         if(scrollPosition < experiencePostion){
-    //             navLinks.forEach(link => {
-    //                 if(link.value != "home"){
-    //                     link.classList.remove('active')
-    //                     link.removeAttribute('aria-current', 'page');
-    //                 } else if (!link.classList.contains('active')){
-    //                     link.classList.add('active');
-    //                     link.setAttribute('aria-current', 'page'); // Important for accessibility
-    //                 }
-    //             });
-    //         }else if(scrollPosition > educationPostion) {
-    //             navLinks.forEach(link => {
-    //                 if(link.value != "home#education"){
-    //                     link.classList.remove('active')
-    //                     link.removeAttribute('aria-current', 'page');
-    //                 } else if (!link.classList.contains('active')){
-    //                     link.classList.add('active');
-    //                     link.setAttribute('aria-current', 'page'); // Important for accessibility
-    //                 }
-    //             });
-    //         }else if(scrollPosition > skillPostion){
-    //             navLinks.forEach(link => {
-    //                 if(link.value != "home#skills"){
-    //                     link.classList.remove('active')
-    //                     link.removeAttribute('aria-current', 'page');
-    //                 } else if (!link.classList.contains('active')){
-    //                     link.classList.add('active');
-    //                     link.setAttribute('aria-current', 'page'); // Important for accessibility
-    //                 }
-    //             });
-
-    //         } else if(scrollPosition > experiencePostion) {
-    //             navLinks.forEach(link => {
-    //                 if(link.value != "home#experience"){
-    //                     link.classList.remove('active')
-    //                     link.removeAttribute('aria-current', 'page');
-    //                 } else if (!link.classList.contains('active')){
-    //                     link.classList.add('active');
-    //                     link.setAttribute('aria-current', 'page'); // Important for accessibility
-    //                 }
-    //             });
-    //         }
-    //     }
-        
-    // });
 
 }
 
@@ -445,7 +367,7 @@ function initializeToTopButton() {
 window.loadPage = loadPage; // Makes the function globally accessible
 
 
-window.addEventListener('popstate', handleRoute);
+// window.addEventListener('popstate', handleRoute);
 // Initialize the app
 initializeApp();
 });
