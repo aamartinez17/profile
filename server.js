@@ -17,6 +17,9 @@ app.use(express.json());
 // Create a 'public' folder in your project root for these files.
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+app.use('/img', express.static(path.join(__dirname, 'public/img')));
+
 // --- ROUTES FOR PAGE NAVIGATION ---
 
 // Route for the homepage
