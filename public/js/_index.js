@@ -35,8 +35,6 @@ const VALID_PAGES = ['home', 'resume', 'projects']; // Add all your valid page n
         navLinks.forEach(link => {
             // First, reset all links to be inactive.
             // console.log('test2');
-            link.classList.remove('active');
-            link.removeAttribute('aria-current');
 
             const href = link.value;
             const url = window.location.href;
@@ -63,10 +61,16 @@ const VALID_PAGES = ['home', 'resume', 'projects']; // Add all your valid page n
 
                 // console.log('linkPage: ' + linkPage);
 
-                if(href === linkPage){
+                if((href === linkPage) && (!linkPage.includes('home'))){
                     // console.log('test 2 linkPage: ' + linkPage);
                     link.classList.add('active');
                     link.setAttribute('aria-current', 'page'); // Important for accessibility
+                } else if((href === linkPage) && (linkPage === 'home') && window.scrollY == 0){
+                    link.classList.add('active');
+                    link.setAttribute('aria-current', 'page'); // Important for accessibility
+                } else if(!linkPage.includes('home#')) {
+                    link.classList.remove('active');
+                    link.removeAttribute('aria-current');
                 }
 
             } catch (error) {
@@ -161,7 +165,7 @@ async function loadPage(pageName, pushToHistory = true) {
         // console.log("contentPlaceholder.innerHTML.trim()" + contentPlaceholder.innerHTML.trim());
 
     if((filteredPage !== currentURL) || contentPlaceholder.innerHTML.trim() === '' || !pushToHistory){
-        console.log("loadHTML");
+        // console.log("loadHTML");
         await loadHTML(contentUrl, contentPlaceholder);
     }
 
@@ -215,18 +219,18 @@ async function setupPageSpecificListeners(pageName) {
     // console.log("setupPageSpecificListeners: " + pageName);
 
     if(pageName === "home"){
-        // initializeNav();
+        initializeNavBars();
         await homeScript();
         scrollTo()
     }
 
     if(pageName === "resume"){
-        // initializeNav();
+        initializeNavBars();
         resumeScript();
     }
 
     if(pageName === 'projects') {
-        // initializeNav();
+        initializeNavBars();
         projectsScript();
     }
 }
@@ -244,7 +248,6 @@ async function handleRoute() {
     }
 
     await loadPage(path, false); // false because we are just loading based on current URL, not a new navigation
-    initializeNav();
 }
 
 // --- Initial Page Load ---
@@ -271,7 +274,8 @@ window.addEventListener('popstate', function(event) {
     }
 });
 
-async function initializeNav() {
+
+async function initializeNavBars() {
 
     const navbarURL = '../pages/navbar.html';
     const navbarPlaceholder = document.getElementById('navbar-Placeholder');
@@ -289,17 +293,6 @@ async function initializeNav() {
         console.error(`Error fetching ${navbarURL}:`, error);
         element.innerHTML = `<p>Error loading content. Please try again later.</p>`;
     }
-
-    document.addEventListener('click', function (event) {
-    
-        // Check if the element that was clicked is outside of the main navbar
-        const isClickOutside = !mainNavbar.contains(event.target);
-
-        // If the menu is open and the click was outside, hide the menu
-        if (isClickOutside) {
-            callapseNavBar();
-        }
-    });
 
 }
 

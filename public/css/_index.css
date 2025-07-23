@@ -12480,6 +12480,9 @@ header .navbar .nav-link {
 header .navbar .nav-link.active {
   color: #FFAB40;
 }
+header .navbar .nav-link.active span {
+  border-bottom: 2px solid #ad0505;
+}
 header .navbar .nav-link:hover {
   color: rgb(255, 148.5706806283, 13);
 }

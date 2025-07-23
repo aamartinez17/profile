@@ -81,6 +81,11 @@ footer {
 
         &.active {
             color: v.$wg-accent; // A distinct but complementary color like Linen
+            & span {
+                border-bottom: 2px solid v.$wg-secondary;
+            }
+            
+            // border-width: ;
         }
 
         &:hover {
@@ -118,9 +123,9 @@ footer {
     }
 }
 
-                .collapsing {
-            transition: height 0.35s ease;
-        }
+    .collapsing {
+        transition: height 0.35s ease;
+    }
 
 
 #to-top-button {

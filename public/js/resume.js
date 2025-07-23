@@ -51,7 +51,7 @@ export async function resumeScript() {
 
             // Get page
             pdfDoc.getPage(num).then(page => {
-                // Set scale
+            //     // Set scale
                 const viewport = page.getViewport({ scale });
                 canvas.height = viewport.height;
                 canvas.width = viewport.width;
@@ -72,39 +72,39 @@ export async function resumeScript() {
                     }
                 });
 
-                // Output current page
-                document.getElementById('page-num').textContent = num;
+            //     // Output current page
+                // document.getElementById('page-num').textContent = num;
             });
         };
 
         // Check for pages rendering
-        const queueRenderPage = num => {
-            if (pageIsRendering) {
-                pageNumIsPending = num;
-            } else {
-                renderPage(num);
-            }
-        };
+        // const queueRenderPage = num => {
+        //     if (pageIsRendering) {
+        //         pageNumIsPending = num;
+        //     } else {
+        //         renderPage(num);
+        //     }
+        // };
 
         // Show previous page
-        const showPrevPage = () => {
-            if (pageNum <= 1) {
-                return;
-            }
-            pageNum--;
-            queueRenderPage(pageNum);
-        };
+        // const showPrevPage = () => {
+        //     if (pageNum <= 1) {
+        //         return;
+        //     }
+        //     pageNum--;
+        //     queueRenderPage(pageNum);
+        // };
 
         // Show next page
-        const showNextPage = () => {
-            if (pageNum >= pdfDoc.numPages) {
-                return;
-            }
-            pageNum++;
-            queueRenderPage(pageNum);
-        };
+        // const showNextPage = () => {
+        //     if (pageNum >= pdfDoc.numPages) {
+        //         return;
+        //     }
+        //     pageNum++;
+        //     queueRenderPage(pageNum);
+        // };
 
-        // Get Document
+        // // Get Document
         pdfjsLib.getDocument(resumeURL).promise.then(pdfDoc_ => {
             pdfDoc = pdfDoc_;
             // document.getElementById('page-count').textContent = pdfDoc.numPages;
