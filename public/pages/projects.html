@@ -15,11 +15,11 @@
                 <div class="col-lg-4">
                     <div class="nav flex-column project-nav" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <div class="project-nav-heading">Primary projects</div>
-                    <button class="nav-link active" id="v-pills-portfolio-tab" data-bs-toggle="pill" data-bs-target="#v-pills-portfolio" type="button" role="tab">Portfolio Showcase</button>
-                    <button class="nav-link" id="v-pills-website-tab" data-bs-toggle="pill" data-bs-target="#v-pills-website" type="button" role="tab">Professional Webpage</button>
-                    <!-- <button class="nav-link" id="v-pills-mounting-tab" data-bs-toggle="pill" data-bs-target="#v-pills-mounting" type="button" role="tab">Smart Home & TV Mounting</button>
-                    <button class="nav-link" id="v-pills-installations-tab" data-bs-toggle="pill" data-bs-target="#v-pills-installations" type="button" role="tab">Closet system Installations</button>
-                     -->
+                    <button class="nav-link active" id="v-pills-CEL-tab" data-bs-toggle="pill" data-bs-target="#v-pills-CEL" type="button" role="tab">Community Management Portal: CEL Harrisonburg</button>
+                    <button class="nav-link" id="v-pills-portfolio-tab" data-bs-toggle="pill" data-bs-target="#v-pills-portfolio" type="button" role="tab">Portfolio Showcase</button>
+                    <!-- <button class="nav-link" id="v-pills-website-tab" data-bs-toggle="pill" data-bs-target="#v-pills-website" type="button" role="tab">Professional Webpage</button> -->
+                    <!-- <button class="nav-link" id="v-pills-installations-tab" data-bs-toggle="pill" data-bs-target="#v-pills-installations" type="button" role="tab">Closet system Installations</button> -->
+                    
                     <!-- <div class="project-nav-heading">Specialized projects</div>
                     <button class="nav-link" id="v-pills-outdoor-tab" data-bs-toggle="pill" data-bs-target="#v-pills-outdoor" type="button" role="tab">Outdoor & Recreational Setup</button>
                     <button class="nav-link" id="v-pills-repairs-tab" data-bs-toggle="pill" data-bs-target="#v-pills-repairs" type="button" role="tab">Kitchen Cabinet and appliance installation</button>
@@ -33,7 +33,7 @@
                 <div class="tab-content" id="v-pills-tabContent">
                     
                     <!-- project Detail: Assembly -->
-                    <div class="tab-pane fade show active" id="v-pills-portfolio" role="tabpanel" aria-labelledby="v-pills-project-tab">
+                    <div class="tab-pane fade" id="v-pills-portfolio" role="tabpanel" aria-labelledby="v-pills-project-tab">
                         <div class="project-detail-content">
                             <img src="../img/project-1.png" alt="Resume Website Project" class="project-image">
                             <h3>Portfolio showcase</h3>
@@ -58,15 +58,116 @@
                         <a href="http://whitegloveassembly.co" target="_blank" class="btn-outline-accent project-link">Visit Website <i class="fas fa-external-link-alt ms-1"></i></a>
                     </div>
 
-                    <!-- project Detail: Mounting -->
-                    <div class="tab-pane fade" id="v-pills-mounting" role="tabpanel" aria-labelledby="v-pills-mounting-tab">
+                    <!-- project Detail: CEL -->
+                    <div class="tab-pane fade show active" id="v-pills-CEL" role="tabpanel" aria-labelledby="v-pills-CEL-tab">
                         <div class="project-detail-content">
-                            <img src="https://placehold.co/400x400/036264/FFFFFF?text=AM" alt="Smart home devices" class="project-image">
-                            <h3>Smart Home & TV Mounting</h3>
+                            <img src="../img/CEL-Homepage.png" alt="CEL Harrisonburg" class="project-image">
+                            <h3>Project Showcase: Full-Stack Community Management Portal for CEL Harrisonburg</h3>
+                            <a href="https://www.celharrisonburg.org" target="_blank" rel="noopener noreferrer"><p><i class="bi bi-link-45deg"></i>www.celharrisonburg.org</p></a>
+                            <br/>
+                            <h4>Project Overview</h4>
                             <p>
-                                We provide secure TV mounting on any surface, including drywall, brick, and concrete, with optional concealed wiring for a clean look.
-                                 Our expertise also extends to the full installation of smart thermostats, security cameras, smart locks, and integrated home systems.
+                                I developed a comprehensive, full-stack web application from the ground up to serve as the digital backbone for CEL Harrisonburg, a professional organization for Latino entrepreneurs and business owners. The platform streamlines member management, automates event organization, and provides a secure, interactive hub for community engagement, replacing manual processes with an efficient, scalable digital solution.
                             </p>
+                            <p>
+                                As the sole developer, I was responsible for the entire project lifecycle, including system architecture, database design, backend development, frontend user-interface design, and security implementation.
+                            </p>
+                            <br/>
+                            <h4>Key Features & Technical Highlights</h4>
+                            <p>
+                                This application was built with a focus on security, real-time functionality, and ease of use for both members and administrators.
+                            </p>
+                            <h6>1. Secure Authentication & Role-Based Access Control</h6>
+                            <ul>
+                                <p>
+                                    I implemented a robust user registration and login system using Firebase Authentication, supporting both traditional email/password and Google OAuth for a seamless user experience. The system is built with role-based access, distinguishing between standard members and administrators, ensuring that sensitive management features are protected.
+                                </p>
+                            </ul>
+                            <br/>
+                            <h6>2. Custom-Built Admin Dashboard</h6>
+                            <ul>
+                                <p>
+                                    A key feature of the project is a comprehensive, secure admin panel. This dashboard empowers the CEL Harrisonburg team to:
+                                </p>
+                                <li>
+                                    <strong>Manage Business Approvals: </strong>
+                                    Review new business submissions, with options to approve, deny, or edit their status.
+                                </li>
+                                <li>
+                                    <strong>Moderate Community Feedback: </strong>
+                                     View and manage submissions from the "Comparte Tu Voz" form, categorized by status (Pending, In Progress, Complete).
+                                </li>
+                                <li>
+                                    <strong>Oversee User Data: </strong>
+                                    View and manage the member directory and profile.
+                                </li>
+                            </ul>
+                            <br/>
+                            <h6>3. Real-Time Database & Content Management</h6>
+                            <ul>
+                                <p>
+                                    Using <strong>Cloud Firestore,</strong> the application's data is synchronized in real-time. This allows for dynamic features such as:
+                                </p>
+                                <li>
+                                    An interactive events calendar that is always up-to-date.
+                                </li>
+                                <li>
+                                    User profiles that can be edited and are instantly reflected across the site.
+                                </li>
+                                <li>
+                                    Live notification badges in the admin panel that update automatically when new items require review.
+                                </li>
+                            </ul>
+                            <br/>
+                            <h6>4. Secure File Management System</h6>
+                            <ul>
+                                <p>
+                                    I architected a secure file storage system using <strong>Firebase Storage</strong> for user profile pictures and business logos. This includes:
+                                </p>
+                                <li>
+                                    A structured, multi-level folder system that ties each file directly to both the <em>userId</em> and the specific <em>businessId</em>.
+                                </li>
+                                <li>
+                                    Strict Firebase Storage security rules that ensure a user can only upload or delete files within their own designated folders, preventing unauthorized access.
+                                </li>
+                            </ul>
+                            <br/>
+                            <h6>5. Third-Party API Integration via Serverless Backend</h6>
+                            <ul>
+                                <p>
+                                    To display a live Instagram feed without compromising security, I developed a serverless backend using <strong>Firebase Cloud Functions</strong>. The function acts as a secure intermediary, safely using a secret API token on the server-side to fetch posts and then passing the data to the frontend. This prevents exposing sensitive keys on the client-side.
+                                </p>
+                            </ul>
+                            <br/>
+                            <h4>Technology Stack</h4>
+                            <ul>
+                                <li>
+                                    <strong>Frontend: </strong>
+                                    Vue.js (Composition API), Vue Router
+                                </li>
+                                <li>
+                                    <strong>Backend & Database: </strong>
+                                    Firebase (Cloud Firestore, Firebase Authentication, Firebase Storage, Cloud Functions)
+                                </li>
+                                <li>
+                                    <strong>Styling: </strong>
+                                    Bootstrap 5, SCSS
+                                </li>
+                                <li>
+                                    <strong>Server-Side Logic: </strong>
+                                    Node.js (for Cloud Functions)
+                                </li>
+                                <li>
+                                    <strong>Security: </strong>
+                                    Firebase Security Rules, Google reCAPTCHA
+                                </li>
+                            </ul>
+                            <br/>
+                            <h4>Outcome</h4>
+                            <p>
+                                The result is a scalable, professional, and secure platform that empowers CEL Harrisonburg to manage its community efficiently and provides immense value to its members. The application serves as a central point for networking, resources, and communication, directly supporting the organization's mission to strengthen the local Latino business community.
+                            </p>
+                            <a href="http://celharrisonburg.org" target="_blank" class="btn-outline-accent project-link">Visit Website <i class="fas fa-external-link-alt ms-1"></i></a>
                         </div>
                     </div>
                     
